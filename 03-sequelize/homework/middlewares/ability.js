@@ -21,4 +21,14 @@ router.put('/setCharacter', async (req, res) => {
     res.json(ability);
 });
 
+router.get('/', async (req, res) => {
+    try{
+        const abilities = await Ability.findAll();
+        res.json(abilities);
+    }
+    catch(err){
+        res.status(404).send('Error en alguno de los datos provistos');
+    }
+})
+
 module.exports = router;
